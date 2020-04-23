@@ -99,24 +99,29 @@ def find_temp(params, beta, time):
 #     P_high = power_out(T_high)
 #     P_low = power_out(T_low)
 #
-#     # Halving the interval for a result
-#     while abs(P_high - P_low) >= 0.05*power_in:
-#
+# Halving the interval for a result
+#     while abs(P_high - P_low) >= 0.05*P:
+
 #     # The only issue we can really get is if P_high is too low - if this is
 #     # the case, just double P_high
-#         if (P_high <= power_in):
+#         if (P_high <= P):
 #             T_high = T_high*2
-#
+
 #         midpoint = (T_low+T_high)/2
-#
-#         if power_out(midpoint) > power_in:
+
+#         if power_out(midpoint) > P:
 #             T_high = midpoint
 #         else:
 #             T_low = midpoint
-#
+
+#         # Just to speed things up, include this line:
+#         if abs(P_high - P_low) < 0.05*P:
+#             break
+
 #         P_high = power_out(T_high)
 #         P_low = power_out(T_low)
-#     # Take the midpoints as the final result since this is the result from halving interval
+#         print(midpoint)
+#         
 #     midpoint = (T_high+T_low)/2
 #     print("--- %s seconds ---" % (time.time() - start_time))
 #     return midpoint
