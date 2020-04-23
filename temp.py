@@ -65,7 +65,7 @@ def find_temp(params, beta, time):
 #     #Finding power absorbed, accouting for doppler shift
 #     wavelength = wavelength_0*np.sqrt((1+beta)/(1-beta))
 #     A = find_absorption_from_coefficient(structure, abs_coeff, wavelength)
-#     power_in = ratio*A*rho_S*(1-beta)/(1+beta)
+#     P = ratio*A*rho_S*(1-beta)/(1+beta)
 #
 #     """ Note: Honestly, this below section should be made into its own function
 #         since it is a reusable block of code. Consider doing this at some point
@@ -74,7 +74,7 @@ def find_temp(params, beta, time):
 #     # The RHS is more complicated, since you can't get an expression for T explicitly
 #     # We need to integrate power flux over all wavelengths to get the total radiated power
 #     midpoint = 0
-#     bb_temp = (power_in/(2*1*5.67e-8))**0.25
+#     bb_temp = (P/(2*1*5.67e-8))**0.25
 #
 #     T_low = bb_temp             # Lower bound = max emissivity = black body temp
 #     T_high = bb_temp*10         # Upper bound arbitrary (might not hold at higher temps) - should find a way to set a true reasonable higher bound
